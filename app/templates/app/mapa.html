@@ -1,0 +1,134 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/mapa.css' %}">
+{% endblock extra_css %}
+{% block content %}
+<div class="container-map">
+        <div id="map"></div>
+    </div>
+    
+{% endblock content %}
+{% block extra_js %}
+<script type="text/javascript" charset="UTF-8" >
+    function addMarkerToGroup(group, coordinate, html) {
+        var icono = "{% static 'img/parking.png' %}";
+          var icon = new H.map.Icon(icono);
+      var marker = new H.map.Marker(coordinate,{icon:icon});
+      // add custom data to the marker
+      marker.setData(html);
+      group.addObject(marker);
+    }
+    /**
+     * Add two markers showing the position of Liverpool and Manchester City football clubs.
+     * Clicking on a marker opens an infobubble which holds HTML content related to the marker.
+     * @param  {H.Map} map      A HERE Map instance within the application
+     */
+    function addInfoBubble(map) {
+      var group = new H.map.Group();
+      map.addObject(group);
+      // add 'tap' event listener, that opens info bubble, to the group
+      group.addEventListener('tap', function (evt) {
+        // event target is the marker itself, group is a parent event target
+        // for all objects that it contains
+        var bubble =  new H.ui.InfoBubble(evt.target.getPosition(), {
+          // read custom data
+          content: evt.target.getData()
+        });
+        // show info bubble
+        ui.addBubble(bubble);
+      }, false);
+    {% for estacionamiento in estacionamientos %}
+    {% if  estacionamiento.latitud  and  estacionamiento.longitud  %}
+     addMarkerToGroup(group, {lat:{{ estacionamiento.latitud }}, lng:{{ estacionamiento.longitud }} },
+        '<div><a href=\'#\' >{{ estacionamiento.direccion }}</a>' +
+        '</div><div >Dueño:{{ estacionamiento.descripcion}}</div>')
+    {% endif %}
+    {% endfor %}
+    };
+   
+      function actualizarPosicion(event) {
+        var miubicacion = {
+            lat: event.coords.latitude,
+            lng: event.coords.longitude
+        };
+        ///DIRECTORIOS IMAGENES Markers
+        var iam = "{% static 'img/dog.png' %}";
+      
+        //icono CERDO
+        var icon1 = new H
+            .map
+            .Icon(iam);
+            ///iconopatas
+     
+        var marker = new H
+            .map
+            .Marker(miubicacion, {icon: icon1});
+        
+          //VEO SI LA UBICACION NO ES LA MISMA QUE LA ANTERIOR BORRO EL MARCADOR 
+          //QUE HABIA PUESTO
+        if(this.miubicacionMarker){
+          map.removeObject(this.miubicacionMarker);
+          
+       
+        }
+       
+        //AGREGO MARCADOR UBICACION ACTUAL
+        map.addObject(marker);
+       
+        //GUARDO MARCADOR UBICACION ACTUAL
+        this.miubicacionMarker = map.addObject(marker);
+    }
+       function centrarMaipu(map) {
+            map.setCenter({lat: -33.4844089, lng:-70.7328651 });
+            map.setZoom(12.5);
+        }
+        
+        navigator
+        .geolocation
+        .watchPosition(actualizarPosicion,erroNo,{maximumAge:0, timeout:5000, enableHighAccuracy:true});
+    function erroNo(err) {
+       alert("Usted a denegado la ubicación, si desea usar el mapa vuelva activarla")
+        console.warn('ERROR(' + err.code + '): ' + err.message);
+    }
+          
+          
+          /**
+           * Boilerplate map initialization code starts below:
+           */
+          
+          //Step 1: initialize communication with the platform
+          var platform = new H.service.Platform({
+            app_id: 'gpxyDUkuU4JbhQf5Z7P8',
+            app_code: '_DgcqAWqeBiCwR99Naf4eA',
+            useHTTPS: true
+          });
+          var pixelRatio = window.devicePixelRatio || 1;
+          var defaultLayers = platform.createDefaultLayers({
+            tileSize: pixelRatio === 1 ? 256 : 512,
+            ppi: pixelRatio === 1 ? undefined : 320
+          });
+          
+          //Step 2: initialize a map  - not specificing a location will give a whole world view.
+          var map = new H.Map(document.getElementById('map'),
+            defaultLayers.normal.map, {pixelRatio: pixelRatio});
+          
+          //Step 3: make the map interactive
+          // MapEvents enables the event system
+          // Behavior implements default interactions for pan/zoom (also on mobile touch environments)
+          var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+          
+          // AGREGAR COMPONENTES UI
+          var ui = H.ui.UI.createDefault(map, defaultLayers,'es-ES');
+          
+          //OPCIONES DEL MAPAA
+          
+          // PRIMERO ES PARA CENTRA EL MAPA EN MAIPUNGA
+        
+          // AGREGAR MARCADORES
+        //   addMarkersToMap(map);
+        addInfoBubble(map);
+        centrarMaipu(map)
+    </script>
+{% endblock extra_js %}

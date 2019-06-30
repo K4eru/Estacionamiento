@@ -1,0 +1,10 @@
+.form-registro{
+    background: whitesmoke;
+   padding: 10px;
+   width: 80%;
+}
+@media screen and (min-width:1000px){
+    .form-registro{
+        width: 60%;
+    }
+}
