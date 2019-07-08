@@ -1,0 +1,122 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+}
+
+/* Posicion de la caja de singin */
+
+.form-signin {
+  width: 100%;
+  max-width: 420px;
+  padding: 15px;
+  margin: auto;
+}
+
+/* Separacion de los label */
+
+.form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+/* Tamaño de los label y padding */
+
+.form-label-group > input,
+.form-label-group > label {
+  height: 3.125rem;
+  padding: .75rem;
+}
+
+/* Configuracion de las letras dentro del label */
+
+.form-label-group > label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  margin-bottom: 0; /* Override default `<label>` margin */
+  line-height: 1.5;
+  color: #495057;
+  pointer-events: none;
+  cursor: text; /* Match the input under the label */
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  transition: all .1s ease-in-out;
+}
+
+/* Separacion de los datos ingresados con el texto dentro del label */
+
+.form-label-group input:not(:placeholder-shown) {
+  padding-top: 1.25rem;
+  padding-bottom: .25rem;
+}
+
+/* Configuracion para achicar la letra de los label */
+
+.form-label-group input:not(:placeholder-shown) ~ label {
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+  font-size: 12px;
+  color: #777;
+}
+
+/* Arregla un error con el label de contraseña */
+
+.form-label-group input::-webkit-input-placeholder {
+    color: transparent;
+  }
+  
+  .form-label-group input:-ms-input-placeholder {
+    color: transparent;
+  }
+  
+  .form-label-group input::-ms-input-placeholder {
+    color: transparent;
+  }
+  
+  .form-label-group input::-moz-placeholder {
+    color: transparent;
+  }
+  
+  .form-label-group input::placeholder {
+    color: transparent;
+  }
+
+
+@media (max-width: 575.98px) {
+
+  .form-signin{
+    padding-bottom: 140px;
+  }
+
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+
+
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) { 
+
+    
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+    
+    
+}
+
+@media (min-width: 1200px) {
+
+}

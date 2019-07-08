@@ -23,7 +23,12 @@ def regstrar_estacionaiento(request):
         return render(request,'app/registro_estacionamiento.html',variables)
     return render(request,'app/registro_estacionamiento.html',variables)
 
+def index(request):
+    variables = {}
+    return render(request, 'app/index.html',variables)
 
+def login(request):
+    return render(request, 'app/login.html')
 def mapa(request):
     estacionamientos = Estacionamiento.objects.all()
     variables = {'estacionamientos':estacionamientos}
