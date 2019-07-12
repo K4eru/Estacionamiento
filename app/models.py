@@ -9,6 +9,7 @@ class Cliente( models.Model ):
     nombre = models.CharField(max_length = 50, null=False, blank=False )
     telefono = models.CharField ( max_length=9, null=False, blank=False )
     correo = models.CharField(max_length=2550, blank=True )
+    password = models.CharField(max_length = 450)
     direccion = models.CharField(max_length=2550, blank=True )
     num_tarj = models.CharField(max_length=2550, blank=True )
     banco = models.CharField(max_length=2550, blank=True )

@@ -23,7 +23,23 @@
     <title>Registro</title>
 </head>
 <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4  bg-white border-bottom shadow-sm">
+        <h5 class="my-0 mr-md-auto font-weight-normal"></h5>
+        <nav class="my-2 my-md-0 mr-md-3">
+          <a class="p-2 text-dark" href="#">Arrendar</a>
+          <a class="p-2 text-dark" href="{% url 'registro_estacionamiento' %}">Registro estacionamientos</a>
+          <a class="p-2 text-dark dropdown-toggle"  href="#">Mi Cuenta</a>
+          <a class="p-2 text-dark" href="#">Registrarse</a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset"> 
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </nav>
+        <a class="btn btn-outline-primary" href="{% url 'login' %}">Ingresar</a>
+      </div>
+      
+        <!--<nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand" href="#">Navbar</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
@@ -52,6 +68,7 @@
                   </ul>
                 </div>
               </nav>
+              -->
     <div class="general-container">
         {% block content %}
 

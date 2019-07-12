@@ -2,7 +2,10 @@
 {% load static %}
 
 {% block extra_css %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 <link rel="stylesheet" href="{% static 'css/mapa.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/mapsjs-ui.css'%}">
 {% endblock extra_css %}
 {% block content %}
 <div class="container-map">
@@ -81,8 +84,8 @@
         this.miubicacionMarker = map.addObject(marker);
     }
        function centrarMaipu(map) {
-            map.setCenter({lat: -33.4844089, lng:-70.7328651 });
-            map.setZoom(12.5);
+            map.setCenter({lat: -33.5116311, lng:-70.7516969 });
+            map.setZoom(15.5);
         }
         
         navigator
@@ -131,4 +134,11 @@
         addInfoBubble(map);
         centrarMaipu(map)
     </script>
+    <script src="{% static 'js/jquery-3.3.1.slim.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/mapsjs-core.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/mapsjs-services.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/mapsjs-ui.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/mapsjs-mapevents.js' %}"></script>
 {% endblock extra_js %}

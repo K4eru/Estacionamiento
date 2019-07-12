@@ -33,3 +33,26 @@ def mapa(request):
     estacionamientos = Estacionamiento.objects.all()
     variables = {'estacionamientos':estacionamientos}
     return render(request,'app/mapa.html',variables)
+
+def user_login(request):
+    context = {}
+    if request.method =="POST":
+        inputemail= request.POST["inputEmail"]
+        inputPassword = request.POST["inputPassword"]
+        user = authenticate(request, inputemail = inputemail, inputPassword = inputPassword)
+        if inputemail:
+            login(request,inputemail)
+            return HttpResponseRedirect(reverse('user_success'))
+        else:
+            context["error"] = "credenciales malas"
+            return render(request,"app/login.html", context)        
+    else:
+        return render(request, "app/login.html",context)
+
+def success(request):
+    context = {}
+    context['inputEmail'] = request.inputEmail
+    return render(request,"app/index.html", context)
+
+def user_logout(request):
+    pass

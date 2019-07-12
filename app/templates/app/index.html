@@ -23,16 +23,12 @@
       <header>
 
           <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4  bg-white border-bottom shadow-sm">
-              <h5 class="my-0 mr-md-auto font-weight-normal">caca</h5>
+              <h5 class="my-0 mr-md-auto font-weight-normal"></h5>
               <nav class="my-2 my-md-0 mr-md-3">
                 <a class="p-2 text-dark" href="#">Arrendar</a>
                 <a class="p-2 text-dark dropdown-toggle"  href="#">Mi Cuenta</a>
-
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset"> 
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
+                <a class="p-2 text-dark" href="#">Registrarse</a>
+                <a class="p-2 text-dark" href="registro">Registro Estacionamiento</a>
               </nav>
               <a class="btn btn-outline-primary" href="{% url 'login' %}">Ingresar</a>
             </div>
@@ -45,7 +41,7 @@
               <h1 class="jumbotron-heading">¿Necesitas Un Estacionamiento?</h1>
               <p class="lead ">¿En busca de un estacionamiento?, ¿que esperas?, busca uno ya. </p>
               <p>
-                <a href="#" class="btn btn-primary m-4">Buscar</a>
+                <a href="{% url 'mapa' %}" class="btn btn-primary m-4">Buscar</a>
 
               </p>
             </div>
